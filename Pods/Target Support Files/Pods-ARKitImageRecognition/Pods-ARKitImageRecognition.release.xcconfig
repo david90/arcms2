@@ -1,0 +1,11 @@
+ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Alamofire" "${PODS_CONFIGURATION_BUILD_DIR}/FMDB" "${PODS_CONFIGURATION_BUILD_DIR}/MagicKit-Skygear" "${PODS_CONFIGURATION_BUILD_DIR}/PKHUD" "${PODS_CONFIGURATION_BUILD_DIR}/SKYKit" "${PODS_CONFIGURATION_BUILD_DIR}/SocketRocket" "${PODS_CONFIGURATION_BUILD_DIR}/SwiftyOnboard" "${PODS_CONFIGURATION_BUILD_DIR}/ZIPFoundation" "${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/iOS"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1 $(inherited) HAVE_CONFIG_H=1
+LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
+OTHER_CFLAGS = $(inherited) -iquote "${PODS_CONFIGURATION_BUILD_DIR}/Alamofire/Alamofire.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/FMDB/FMDB.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/MagicKit-Skygear/MagicKit.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/PKHUD/PKHUD.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/SKYKit/SKYKit.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/SocketRocket/SocketRocket.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/SwiftyOnboard/SwiftyOnboard.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/ZIPFoundation/ZIPFoundation.framework/Headers"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"c++" -l"sqlite3" -l"z" -framework "Alamofire" -framework "AppCenter" -framework "AppCenterAnalytics" -framework "AppCenterCrashes" -framework "CoreTelephony" -framework "FMDB" -framework "Foundation" -framework "MagicKit" -framework "PKHUD" -framework "SKYKit" -framework "SocketRocket" -framework "SwiftyOnboard" -framework "SystemConfiguration" -framework "UIKit" -framework "ZIPFoundation"
+OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
+PODS_BUILD_DIR = ${BUILD_DIR}
+PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
+PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
+PODS_ROOT = ${SRCROOT}/Pods
