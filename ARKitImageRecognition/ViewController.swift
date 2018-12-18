@@ -16,7 +16,7 @@ class ViewController: UIViewController,SwiftyOnboardDelegate, SwiftyOnboardDataS
     var swiftyOnboard: SwiftyOnboard!
     let PAGE_COUNT = 3
     let colors:[UIColor] = [#colorLiteral(red: 0.8557546576, green: 0.9424226484, blue: 1, alpha: 1),#colorLiteral(red: 0.7268318147, green: 0.9160812231, blue: 1, alpha: 1),#colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)]
-    var titleArray: [String] = ["Welcome to Oursky AR Demo", "Look for image markers", "Custom images and models"]
+    var titleArray: [String] = ["Welcome to AR Demo", "Look for image markers", "Custom images and models"]
     var subTitleArray: [String] = ["", "Pan your camera around and look for reference images.", "You can upload your custom images and 3D objects using ARCMS."]
     
     var gradiant: CAGradientLayer = {
@@ -50,8 +50,6 @@ class ViewController: UIViewController,SwiftyOnboardDelegate, SwiftyOnboardDataS
     
     @objc func handleContinue(sender: UIButton) {
         let index = sender.tag
-        print("index", index)
-        
         if (index+1 >= PAGE_COUNT) {
             swiftyOnboard?.removeFromSuperview()
         } else {
@@ -118,7 +116,7 @@ class ViewController: UIViewController,SwiftyOnboardDelegate, SwiftyOnboardDataS
     
     let fadeDuration: TimeInterval = 0.3
     let rotateDuration: TimeInterval = 10
-    let waitDuration: TimeInterval = 999
+    let waitDuration: TimeInterval = 99
     
     lazy var fadeAndSpinAction: SCNAction = {
         return .sequence([
@@ -198,12 +196,17 @@ class ViewController: UIViewController,SwiftyOnboardDelegate, SwiftyOnboardDataS
     }
     
     func resetTrackingConfiguration() {
+        print("Reset!")
         guard let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else { return }
         let configuration = ARWorldTrackingConfiguration()
         configuration.detectionImages = referenceImages
-        let options: ARSession.RunOptions = [.resetTracking, .removeExistingAnchors]
+        
+        // FIXME
+        let options: ARSession.RunOptions = [.removeExistingAnchors] //[.resetTracking, .removeExistingAnchors]
         sceneView.session.run(configuration, options: options)
+//        sceneView.no
         label.text = "📷 Look for a mark to show 3D model"
+        
     }
 }
 
@@ -224,7 +227,7 @@ extension ViewController: ARSCNViewDelegate {
             // TODO: Overlay 3D Object
             let overlayNode = self.getNode(withImageName: imageName)
             overlayNode.opacity = 0
-            overlayNode.position.y = 0.2
+            overlayNode.position.y = 0.1
             overlayNode.runAction(self.fadeAndSpinAction)
             node.addChildNode(overlayNode)
             
@@ -259,6 +262,4 @@ extension ViewController: ARSCNViewDelegate {
     }
  
     // SwiftyOnboardDataSource
-
-    
 }
